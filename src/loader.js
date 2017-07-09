@@ -42,8 +42,8 @@ export default function (content) {
 
   let cb = this.async();
 
-  Promise.resolve(String(content))
-    .then(optimize(query.svgo))
+    Promise.resolve(this.fs._readFileStorage.data[this.resource][1].toString())
+        .then(optimize(query.svgo))
     .then(transform({
       jsx: query.jsx
     }))
